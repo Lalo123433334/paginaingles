@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global English Academy | Aprende Inglés Hoy</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="shortcut icon" href="assets/iconos/idioma-en-ingles.png" type="image/x-icon">
+</head>
+
+<body>
+
+    <!-- Banner de confirmación -->
+    <div id="mensaje-exito" class="mensaje-exito">
+        ¡Tu información fue enviada con éxito! Nos contactaremos pronto.
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">Global English</div>
+
+            <button class="menu-toggle" id="mobile-menu">
+                &#9776; </button>
+
+            <div class="nav-links" id="nav-menu">
+                <a href="#inicio">Inicio</a>
+                <a href="cursos.html">Cursos</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="nosotros.html">Nosotros</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <h1>Domina el Inglés, Domina tu Futuro</h1>
+        <p>Clases dinámicas,horarios flexibles. Da el siguiente paso en tu carrera profesional o
+            académica.</p>
+        <a href="#contacto" class="btn">Solicitar Información</a>
+    </section>
+
+
+    <section id="contacto" class="contact">
+        <div class="contact-container">
+            <h2>Pide información sin compromiso</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: var(--gray);">Déjanos tus datos y un asesor
+                académico te contactará hoy mismo.</p>
+
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Ej. Juan Pérez">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" required placeholder="tu@correo.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Teléfono / WhatsApp</label>
+                    <input type="tel" id="telefono" name="telefono" required placeholder="+52 000 000 0000">
+                </div>
+
+                <div class="form-group">
+                    <label for="curso">¿Qué curso te interesa?</label>
+                    <select id="curso" name="curso" required>
+                        <option value="" disabled selected>Selecciona una opción...</option>
+                        <option value="General">Inglés General</option>
+                        <option value="Negocios">Inglés de Negocios</option>
+                        <option value="Certificacion">Preparación TOEFL/IELTS</option>
+                        <option value="Ninos">Inglés para Niños</option>
+                        <option value="Ninos">Inglés para Ingenieros</option>
+                        <option value="Ninos">Inglés para el trabajo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensaje">Comentarios o dudas adicionales (Opcional)</label>
+                    <textarea id="mensaje" name="mensaje" rows="4"
+                        placeholder="¿Tienes alguna duda específica sobre horarios o precios?"></textarea>
+                </div>
+
+                <button type="submit" class="btn">Pedir Información</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Global English Academy. Todos los derechos reservados.</p>
+    </footer>
+    <script src="js/envio_formulario.js"></script>
+    <script src="js/menu.js"></script>
+    <a href="https://wa.me/9995587133?text=Hola,%20me%20gustaría%20recibir%20información%20sobre%20los%20cursos%20de%20Global%20English%20Academy"
+        class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+            class="whatsapp-icon">
+    </a>
+</body>
+
+</html>

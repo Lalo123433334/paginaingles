@@ -1,0 +1,1017 @@
+/* --- Variables y Reseteo --- */
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --dark: #1e293b;
+    --light: #f8fafc;
+    --gray: #64748b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+
+}
+
+main,
+.contenido-principal {
+    flex: 1;
+}
+
+/* --- Navegación --- */
+header {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark);
+    margin-left: 2rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+/* --- Hero Section --- */
+.hero {
+    background: linear-gradient(rgba(30, 41, 59, 0.8), rgba(30, 41, 59, 0.8)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    background-color: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--primary-hover);
+}
+
+/* --- Cursos --- */
+.courses {
+    padding: 5rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.courses h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--dark);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+/* --- Contacto --- */
+.contact {
+    background-color: white;
+    padding: 5rem 5%;
+}
+
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+input,
+select,
+textarea {
+    padding: 0.8rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        /* En un proyecto real aquí iría un menú hamburguesa */
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* --- Ajustes para el Menú Móvil --- */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        /* Aparece solo en móviles */
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        padding: 1rem 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+        /* Se muestra al hacer clic */
+    }
+
+    .nav-links a {
+        margin: 1rem 5%;
+    }
+}
+
+/* Estilos del boton de whatsapp */
+
+/* Estilos para el Botón de WhatsApp */
+/* Busca esta regla en tu archivo y cámbiala */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 15px;
+    /* Antes estaba en 40px, bajar a 15px lo acerca al borde */
+    right: 20px;
+    /* También puedes ajustar la distancia al borde derecho */
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-icon {
+    width: 35px;
+    height: 35px;
+
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    background-color: #128c7e;
+    box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Ajuste para dispositivos móviles */
+@media screen and (max-width: 768px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .whatsapp-icon {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Estilos del Modal */
+.modal-overlay {
+    display: none;
+    /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-content h3 {
+    color: #2563eb;
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    margin-bottom: 20px;
+    color: #444;
+}
+
+
+.mensaje-exito {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    font-weight: bold;
+    display: none;
+    position: sticky;
+    /* Se queda fijo arriba mientras lees */
+    top: 70px;
+    /* Justo debajo de tu header */
+    z-index: 99;
+    transition: all 0.3s ease;
+}
+
+/* --- Estructura del Carrusel --- */
+.informacion {
+    margin-top: 75px;
+    /* Ajuste para que no quede detrás del header */
+    padding: 0;
+    width: 100%;
+}
+
+.carousel-inner {
+    height: 50vh;
+    /* Media hoja de alto */
+    width: 100vw;
+    /* Toda la hoja a lo ancho */
+}
+
+.carousel-item,
+.carousel-item img {
+    height: 50vh;
+    width: 100%;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    object-position: center;
+}
+
+.derecho {
+    background-color: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    margin-top: auto;
+}
+
+/* Estilos de section sobre_nosotros  */
+.section.sobre_nosotros {
+    flex: 1;
+    padding: 60px 0;
+}
+
+/* --- Estilos de la sección --- */
+.sobre_nosotros h2 {
+    color: #3f51b5;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+}
+
+/* Una rayita decorativa debajo del título */
+.sobre_nosotros h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #3f51b5;
+    margin-top: 10px;
+    border-radius: 2px;
+}
+
+.sobre_nosotros ul li {
+    font-size: 1.1rem;
+    color: var(--dark);
+}
+
+/* Ajuste específico para la sección sobre nosotros */
+.sobre_nosotros img {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    /* Le da profundidad */
+}
+
+/* Espaciado de la sección */
+.sobre_nosotros {
+    padding: 80px 0;
+}
+
+.derecho {
+    background-color: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto;
+
+}
+
+/* --- Diseño de Cursos (Layout de dos columnas) --- */
+
+.main-container-cursos {
+    display: flex;
+    max-width: 1200px;
+    margin: 110px auto 50px;
+    /* Margen superior para no chocar con el header */
+    padding: 0 5%;
+    gap: 40px;
+}
+
+/* Sidebar Estilo Captura */
+.sidebar-cursos {
+    width: 260px;
+    flex-shrink: 0;
+}
+
+.sidebar-card h3 {
+    color: var(--primary);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.lista-cursos {
+    list-style: none;
+}
+
+.lista-cursos li {
+    margin-bottom: 15px;
+}
+
+.lista-cursos li a {
+    text-decoration: none;
+    color: #577399;
+    /* Azul grisáceo de la captura */
+    font-size: 1.05rem;
+    transition: 0.3s;
+}
+
+.lista-cursos li.activo a {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.lista-cursos li a:hover {
+    color: var(--primary);
+    padding-left: 5px;
+}
+
+/* Contenido Principal */
+.contenido-leccion {
+    flex: 1;
+}
+
+.breadcrumb {
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+}
+
+.breadcrumb span {
+    color: var(--dark);
+    font-weight: 600;
+}
+
+.encabezado-curso h1 {
+    color: var(--dark);
+    font-size: 2.3rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.encabezado-curso p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* Tarjeta de Unidad y Timeline */
+.unidad-card {
+    background: white;
+    border-radius: 12px;
+    padding: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.label-unidad {
+    color: #f97316;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.unidad-card h2 {
+    margin: 0.5rem 0 2rem;
+    font-size: 1.8rem;
+}
+
+.unidad-card h2 small {
+    color: var(--gray);
+    font-weight: normal;
+}
+
+.timeline-container {
+    position: relative;
+    padding-left: 40px;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 7px;
+    top: 5px;
+    bottom: 5px;
+    width: 3px;
+    background-color: var(--primary);
+}
+
+.timeline-punto {
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+
+.circulo {
+    position: absolute;
+    left: -40px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border: 3px solid var(--primary);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.texto h4 {
+    color: var(--primary);
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.texto h4 span {
+    color: var(--gray);
+    font-weight: normal;
+    font-size: 0.9rem;
+}
+
+/* Responsive para tablets y móviles */
+@media (max-width: 900px) {
+    .main-container-cursos {
+        flex-direction: column;
+    }
+
+    .sidebar-cursos {
+        width: 100%;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 1rem;
+    }
+}
+
+/* ESTILOS PARA INGLES INTERMEDIO */
+
+.ingles_intermedio {
+    padding: 2rem;
+    text-align: center;
+}
+
+
+/* ESTILOS PARA NUESTROS PROGRAMAS */
+
+.nuestros-programas {
+    padding: 2rem 1rem 1rem;
+    text-align: center;
+    color: #3f51b5;
+    font-weight: bold;
+}
+
+
+.niveles-ingles {
+    display: grid;
+    /* Crea columnas de mínimo 350px que llenan todo el ancho disponible */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    padding: 40px 5%;
+    max-width: 1600px;
+    /* Un poco más de aire para pantallas grandes */
+    margin: 0 auto;
+    width: 100%;
+}
+
+.nuestros-programassub {
+    color: black;
+    font-weight: bold;
+}
+
+/* Estilo de la Card */
+
+.nuestros-programas {
+    position: relative;
+    overflow: hidden;
+    background-color: #ffffff;
+    background: radial-gradient(at 0% 0%, rgba(113, 194, 133, 0.1) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(63, 81, 181, 0.1) 0px, transparent 50%);
+    padding: 2rem 1rem;
+}
+
+.nuestros-programas::before,
+.nuestros-programas::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    filter: blur(80px);
+    opacity: 0.15;
+}
+
+/* Círculo superior izquierdo */
+.nuestros-programas::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: rgba(245, 176, 110, 0.1);
+    filter: blur(100px);
+    border-radius: 50%;
+    top: 20%;
+    left: 30%;
+    z-index: 0;
+}
+
+/* Círculo superior derecho */
+.nuestros-programas::after {
+    width: 250px;
+    height: 250px;
+    background-color: #3f51b5;
+    /* El azul de tu marca */
+    top: 50px;
+    right: -50px;
+}
+
+
+.card {
+    width: 100%;
+    height: 480px;
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: none;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Elementos visibles inicialmente */
+.semicirculo {
+    width: 180px;
+    height: 140px;
+    /* Ajustado para que no sea un semicírculo plano */
+    background-color: white;
+    border-radius: 100px 100px 20px 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.semicirculo img {
+    width: 80%;
+    height: auto;
+    object-fit: contain;
+}
+
+.card-title {
+    color: white;
+    /* Color blanco para contrastar con los fondos de colores */
+    font-size: 2rem;
+    margin-top: 20px;
+    font-weight: 1000;
+    transition: opacity 0.3s ease;
+}
+
+/* El texto que aparece al hacer hover */
+.card-subtitle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.96);
+    /* Fondo casi sólido para lectura */
+    color: #333;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    text-transform: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* Estado inicial (Oculto) */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    z-index: 2;
+}
+
+/* Efecto Hover: Mostrar subtítulo y opacar fondo */
+.card:hover .card-subtitle {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.card:hover .semicirculo,
+.card:hover .card-title {
+    opacity: 0.2;
+    filter: blur(2px);
+}
+
+/* Colores de Fondo de las Cards */
+.card-a1 {
+    background-color: #71c285;
+}
+
+.card-a2 {
+    background-color: #f5b06e;
+}
+
+.card-b1 {
+    background-color: #f5d682;
+}
+
+.card-b2 {
+    background-color: #f17b73;
+}
+
+.card-c1 {
+    background-color: #e582b1;
+}
+
+.card-c2 {
+    background-color: #32b370;
+}
+
+/* --- Cuerpo de la tarjeta de beneficios --- */
+.card-body2 {
+    padding: 60px 5%;
+    /* Padding dinámico */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+}
+
+.beneficios-title {
+    color: var(--dark);
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.card-text {
+    color: var(--gray);
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 1.2rem;
+    max-width: 700px;
+    line-height: 1.6;
+}
+
+/* --- Grid de beneficios (El cambio principal) --- */
+.beneficios-list {
+    display: grid;
+    /* Crea dos columnas en pantallas grandes */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    width: 100%;
+    max-width: 1100px;
+    /* Expandimos el ancho de la lista */
+    list-style: none;
+    padding: 0;
+}
+
+.beneficios-list li {
+    background: #f8fafc;
+    /* Fondo sutil para cada ítem */
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    /* Icono y título arriba, texto abajo */
+    align-items: flex-start;
+    transition: all 0.3s ease;
+}
+
+.beneficios-list li:hover {
+    background: #ffffff;
+    border-color: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.beneficios-list li .icon {
+    background: white;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.beneficios-list li strong {
+    color: var(--primary);
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Texto descriptivo dentro del beneficio */
+.beneficios-list li {
+    font-size: 1.05rem;
+    color: #475569;
+    line-height: 1.5;
+}
+
+.icon {
+    flex-shrink: 0;
+}
+
+.imagen-nuestroprograma {
+    position: absolute;
+    opacity: .5;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    /* Envía la imagen al fondo */
+}
+
+.texto-nuestroprograma {
+    width: 100%;
+    padding: 0 5%;
+}
+
+.sub-programa {
+    color: rgb(10, 10, 10);
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+/* Estilos de servicios */
+
+.services-hero {
+    background-color: var(--primary-color);
+    color: #3f51b5;
+    padding: 4rem 2rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.services-herosubtitle {
+    color: #080808;
+    font-weight: bold;
+}
+
+.services-grid-container {
+    padding: 2rem 10%;
+    background-color: var(--white);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 4px solid var(--primary-color);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-card .icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.service-card p {
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+.cta-services {
+    text-align: center;
+    padding: 5rem 2rem;
+    /* Aumentamos un poco el padding vertical */
+    background-color: #f9f9f9;
+    display: flex;
+    /* Usamos Flexbox para control total */
+    flex-direction: column;
+    /* Alineamos los elementos en columna */
+    align-items: center;
+    /* Centramos horizontalmente */
+    gap: 1.5rem;
+    /* Esto crea el espacio automático entre el h2, p y el btn */
+}
+
+.cta-services p {
+    max-width: 600px;
+    /* Evita que el texto sea demasiado ancho y se vea mal */
+    margin: 0 auto;
+    /* Asegura el centrado si no usas flex */
+    line-height: 1.6;
+}
+
+.cta-services .btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 10px 20px;
+}
+
+.cta-services h2 {
+    margin-bottom: 1rem;
+}
+
+/* Estilo para el link activo en la nav */
+nav .nav-links a.active {
+    font-weight: bold;
+    border-bottom: 2px solid var(--white);
+}
