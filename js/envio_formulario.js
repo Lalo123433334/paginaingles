@@ -3,18 +3,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('contact-form');
     const mensajeExito = document.getElementById('mensaje-exito');
-    // Considera ofuscar esta URL a futuro si notas mucho spam, aunque el honeypot detendrá el 90%
     const scriptURL = 'https://script.google.com/macros/s/AKfycby-HdEN2BAYAMYRvVgF1IR-R-bxF9-uejJENUqsEPHNHkIpfo7bVn3-7gRVBcyBobToaQ/exec';
 
     if (form) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // --- SEGURIDAD: Validación del Honeypot ---
+            // 1. Verificación de seguridad (Honeypot)
             const botField = document.getElementById('bot_field').value;
             if (botField !== "") {
-                // Es un bot. Simulamos éxito pero no enviamos nada.
-                console.warn('Bot detectado y bloqueado silenciosamente.');
                 form.reset();
                 return;
             }
@@ -22,60 +19,49 @@ document.addEventListener('DOMContentLoaded', () => {
             const btn = form.querySelector('button');
             const inputs = form.querySelectorAll('input, select, textarea');
 
-            // Estado de carga preventivo
+            // UI: Estado de carga
             btn.innerText = 'Enviando...';
             btn.disabled = true;
-            inputs.forEach(input => input.disabled = true);
 
-            // Saneamiento básico de datos (limpiar espacios extras)
-            const formData = new FormData(form);
-            for (let [key, value] of formData.entries()) {
-                if (typeof value === 'string') {
-                    formData.set(key, value.trim());
-                }
-            }
-            // Evitamos enviar el honeypot a tu Google Sheet
-            formData.delete('bot_field');
+            // 2. Preparación de datos (EL FIX)
+            // Extraemos los datos manualmente para asegurar compatibilidad total
+            const datosParaEnviar = new URLSearchParams();
+            datosParaEnviar.append('nombre', document.getElementById('nombre').value.trim());
+            datosParaEnviar.append('email', document.getElementById('email').value.trim());
+            datosParaEnviar.append('telefono', document.getElementById('telefono').value.trim());
+            datosParaEnviar.append('curso', document.getElementById('curso').value);
+            datosParaEnviar.append('mensaje', document.getElementById('mensaje').value.trim());
 
             try {
-                // Envío asíncrono
+                // 3. Envío
                 await fetch(scriptURL, {
                     method: 'POST',
-                    body: formData,
-                    mode: 'no-cors' // Requerido para Google Scripts, aunque oculta el status de la respuesta
+                    body: datosParaEnviar,
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
                 });
 
-                // Éxito UI
+                // UI: Éxito
                 btn.innerText = '¡Enviado!';
                 btn.style.backgroundColor = '#4CAF50';
-
                 mensajeExito.style.display = 'block';
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-
                 form.reset();
 
-                // Limpiar después de 3 segundos
                 setTimeout(() => {
                     mensajeExito.style.display = 'none';
                     btn.innerText = 'Pedir Información';
                     btn.style.backgroundColor = '';
                     btn.disabled = false;
-                    inputs.forEach(input => {
-                        // Mantenemos el honeypot oculto y deshabilitado
-                        if (input.id !== 'bot_field') input.disabled = false;
-                    });
                 }, 3000);
 
             } catch (error) {
-                console.error('Error durante el envío:', error.message);
-                alert('Hubo un problema de conexión. Por favor, intenta más tarde o contáctanos por WhatsApp.');
-
-                // Restaurar UI en caso de error
-                btn.innerText = 'Intentar nuevamente';
+                console.error('Error:', error);
+                alert('Error al enviar. Intenta por WhatsApp.');
                 btn.disabled = false;
-                inputs.forEach(input => {
-                    if (input.id !== 'bot_field') input.disabled = false;
-                });
+                btn.innerText = 'Reintentar';
             }
         });
     }
