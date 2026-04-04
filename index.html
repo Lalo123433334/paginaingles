@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Global English Academy. Aprende inglés con clases dinámicas y horarios flexibles. Da el siguiente paso en tu carrera profesional.">
+
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: https://images.unsplash.com https://upload.wikimedia.org; connect-src 'self' https://script.google.com; frame-src 'none'; object-src 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Global English Academy | Aprende Inglés Hoy</title>
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="shortcut icon" href="assets/iconos/idioma-en-ingles.png" type="image/x-icon">
@@ -43,17 +48,26 @@
                 <p style="text-align: center; margin-bottom: 2rem; color: var(--gray);">Déjanos tus datos y un asesor
                     académico te contactará hoy mismo.</p>
                 <form id="contact-form">
+
+                    <div style="display: none;" aria-hidden="true">
+                        <label for="bot_field">No llenes este campo si eres humano:</label>
+                        <input type="text" id="bot_field" name="bot_field" tabindex="-1" autocomplete="off">
+                    </div>
+
                     <div class="form-group">
                         <label for="nombre">Nombre completo</label>
-                        <input type="text" id="nombre" name="nombre" required placeholder="Ej. Juan Pérez">
+                        <input type="text" id="nombre" name="nombre" required placeholder="Ej. Juan Pérez"
+                            maxlength="100">
                     </div>
                     <div class="form-group">
                         <label for="email">Correo electrónico</label>
-                        <input type="email" id="email" name="email" required placeholder="tu@correo.com">
+                        <input type="email" id="email" name="email" required placeholder="tu@correo.com"
+                            maxlength="100">
                     </div>
                     <div class="form-group">
                         <label for="telefono">Teléfono / WhatsApp</label>
-                        <input type="tel" id="telefono" name="telefono" required placeholder="+52 000 000 0000">
+                        <input type="tel" id="telefono" name="telefono" required placeholder="+52 000 000 0000"
+                            maxlength="20" pattern="[0-9\+\-\s\(\)]{8,20}" title="Un número de teléfono válido">
                     </div>
                     <div class="form-group">
                         <label for="curso">¿Qué curso te interesa?</label>
@@ -70,7 +84,8 @@
                     <div class="form-group">
                         <label for="mensaje">Comentarios o dudas adicionales (Opcional)</label>
                         <textarea id="mensaje" name="mensaje" rows="4"
-                            placeholder="¿Tienes alguna duda específica sobre horarios o precios?"></textarea>
+                            placeholder="¿Tienes alguna duda específica sobre horarios o precios?"
+                            maxlength="500"></textarea>
                     </div>
                     <button type="submit" class="btn">Pedir Información</button>
                 </form>
