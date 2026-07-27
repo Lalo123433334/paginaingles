@@ -3,7 +3,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('contact-form');
     const mensajeExito = document.getElementById('mensaje-exito');
-    const scriptURL = 'https://script.google.com/macros/s/AKfycby-HdEN2BAYAMYRvVgF1IR-R-bxF9-uejJENUqsEPHNHkIpfo7bVn3-7gRVBcyBobToaQ/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzzeSC7pyIqM_JmeYyIqPquabmkQhUOnXk5UccNKkb357hpkhBvrpqarImPCX0lKGyVTg/exec';
+
 
     if (form) {
         form.addEventListener('submit', async (e) => {
@@ -23,8 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.innerText = 'Enviando...';
             btn.disabled = true;
 
-            // 2. Preparación de datos (EL FIX)
-            // Extraemos los datos manualmente para asegurar compatibilidad total
+            // 2. Preparación de datos
             const datosParaEnviar = new URLSearchParams();
             datosParaEnviar.append('nombre', document.getElementById('nombre').value.trim());
             datosParaEnviar.append('email', document.getElementById('email').value.trim());
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
 
-                // UI: Éxito
+                // Éxito
                 btn.innerText = '¡Enviado!';
                 btn.style.backgroundColor = '#4CAF50';
                 mensajeExito.style.display = 'block';
