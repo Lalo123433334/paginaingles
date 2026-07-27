@@ -3,14 +3,11 @@
     --primary: #2563eb;
     --primary-hover: #1d4ed8;
     --primary-color: #f0f4ff;
-    /* Faltaba esta variable usada en servicios */
     --secondary-color: #ffffff;
-    /* Faltaba esta variable usada en servicios */
     --dark: #1e293b;
     --light: #f8fafc;
     --gray: #64748b;
     --white: #ffffff;
-    /* Faltaba esta variable para tu menú activo */
 }
 
 * {
@@ -79,7 +76,7 @@ nav .nav-links a.active {
     /* Corregido: --white lo hacía invisible */
 }
 
-/* --- Hero Section --- */
+/* --- Seccion Hero --- */
 .hero {
     background: linear-gradient(rgba(30, 41, 59, 0.8), rgba(30, 41, 59, 0.8)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover;
     height: 100vh;
@@ -287,7 +284,6 @@ footer {
 
 .carousel-item img {
     object-fit: cover;
-    /* Bug Fix: 'center' no es válido para object-fit */
     object-position: center;
 }
 
@@ -346,7 +342,6 @@ footer {
 }
 
 .card.card-nivel {
-    /* Nueva clase auxiliar para no sobreescribir `.card` genérica */
     height: 480px;
     border-radius: 25px;
     position: relative;
